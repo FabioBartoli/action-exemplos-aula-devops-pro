@@ -1,0 +1,28 @@
+name: Verificar actions
+description: Lista as actions usadas nos workflows e aponta as que não seguem as boas práticas de versão
+author: Fabio Bartoli
+
+branding:
+  icon: shield
+  color: green
+
+inputs:
+  caminho:
+    description: Pasta onde procurar os arquivos YAML
+    default: .github
+  donos-confiaveis:
+    description: Donos de actions aceitos com tag de versão, separados por vírgula
+    default: actions,github
+  falhar:
+    description: Falhar o job quando houver avisos
+    default: 'false'
+
+outputs:
+  total:
+    description: Quantidade de actions encontradas
+  avisos:
+    description: Quantidade de actions com aviso
+
+runs:
+  using: node24
+  main: index.js
